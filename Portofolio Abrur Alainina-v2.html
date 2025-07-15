@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOAD_PROFILE: MOHAMAD ABRUR ALAINA</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Space Mono & Orbitron for headers -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <!-- AOS - Animate on Scroll Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* Variabel Warna Cyberpunk */
+        :root {
+            --bg-color: #0d0d1a;
+            --primary-cyan: #00f6ff;
+            --primary-pink: #ff00c1;
+            --border-color: rgba(0, 246, 255, 0.2);
+            --card-bg: rgba(17, 24, 39, 0.5); /* bg-gray-900/50 */
+        }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background-color: var(--bg-color);
+            color: #d1d5db; /* gray-300 */
+            background-image: 
+                radial-gradient(circle at 25px 25px, rgba(0, 246, 255, 0.1) 2%, transparent 0%), 
+                radial-gradient(circle at 75px 75px, rgba(255, 0, 193, 0.05) 2%, transparent 0%);
+            background-size: 100px 100px;
+            animation: move-background 10s linear infinite;
+        }
+
+        @keyframes move-background {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
+        }
+
+        .font-orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        /* Efek Neon Glow */
+        .neon-cyan { color: var(--primary-cyan); text-shadow: 0 0 3px var(--primary-cyan), 0 0 5px var(--primary-cyan); }
+        .neon-pink { color: var(--primary-pink); text-shadow: 0 0 3px var(--primary-pink), 0 0 5px var(--primary-pink); }
+
+        /* Efek Glitch pada Judul Utama */
+        .glitch {
+            position: relative;
+            font-weight: 900;
+            letter-spacing: 0.2em;
+            animation: glitch-skew 1s infinite linear alternate-reverse;
+        }
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 var(--primary-pink);
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 var(--primary-cyan), 2px 2px var(--primary-pink);
+            clip: rect(85px, 450px, 90px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim {
+            0% { clip: rect(42px, 9999px, 44px, 0); transform: skew(0.3deg); }
+            /* ... (more steps for complex glitch) ... */
+            100% { clip: rect(20px, 9999px, 92px, 0); transform: skew(0.8deg); }
+        }
+        @keyframes glitch-anim2 {
+            0% { clip: rect(40px, 9999px, 100px, 0); transform: skew(0.2deg); }
+            /* ... (more steps for complex glitch) ... */
+            100% { clip: rect(80px, 9999px, 60px, 0); transform: skew(-0.5deg); }
+        }
+        @keyframes glitch-skew {
+            0% { transform: skew(1deg); }
+            100% { transform: skew(-1deg); }
+        }
+
+        /* Efek Ketik */
+        .typing-effect {
+            border-right: .15em solid var(--primary-cyan);
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--primary-cyan); } }
+
+        /* Styling untuk Kartu/Panel */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            border-radius: 0.5rem;
+            position: relative;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            border-color: var(--primary-cyan);
+            box-shadow: 0 0 15px rgba(0, 246, 255, 0.2);
+        }
+        .card::before, .card::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            transition: all 0.3s ease;
+        }
+        .card::before {
+            top: -2px; left: -2px;
+            border-top: 2px solid var(--primary-cyan);
+            border-left: 2px solid var(--primary-cyan);
+        }
+        .card::after {
+            bottom: -2px; right: -2px;
+            border-bottom: 2px solid var(--primary-pink);
+            border-right: 2px solid var(--primary-pink);
+        }
+
+        /* Styling untuk Judul Blok */
+        .block-title {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Styling untuk Timeline */
+        .timeline-item {
+            position: relative;
+            padding-left: 2.5rem;
+            padding-bottom: 2rem;
+            border-left: 2px solid var(--border-color);
+        }
+        .timeline-item:last-child {
+            border-left: 2px solid transparent;
+            padding-bottom: 0;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--bg-color);
+            border: 2px solid var(--primary-cyan);
+            transition: all 0.3s ease;
+        }
+        .timeline-item:hover::before {
+            background: var(--primary-cyan);
+            box-shadow: 0 0 10px var(--primary-cyan);
+        }
+    </style>
+</head>
+<body class="bg-gray-900">
+
+    <div class="container mx-auto max-w-7xl p-4 sm:p-8">
+
+        <!-- HEADER -->
+        <header class="text-center mb-24" data-aos="fade-in" data-aos-duration="1500">
+            <div class="inline-block mb-6 relative">
+                <img src="https://github.com/aabrur/my-portfolio-assets/blob/main/Photo%20Profile%20(ZZZ).png?raw=true" alt="[Logo Abrur]" class="w-32 h-32 rounded-full border-2 border-cyan-400 shadow-lg shadow-cyan-500/30 p-1">
+                <div class="absolute inset-0 rounded-full border-2 border-pink-500 animate-spin" style="animation-duration: 5s;"></div>
+            </div>
+            <h1 class="glitch font-orbitron text-4xl md:text-6xl text-white uppercase" data-text="ABRUR ALAINA">ABRUR ALAINA</h1>
+            <p class="mt-6 text-lg md:text-xl neon-cyan typing-effect mx-auto max-w-2xl">AI ARTIST // CREATIVE TECHNOLOGIST // CULTURAL INTEGRATOR</p>
+        </header>
+
+        <!-- MANIFESTO -->
+        <section id="manifesto" class="mb-24">
+            <h2 class="block-title text-3xl neon-pink" data-aos="fade-right">>_MANIFESTO_</h2>
+            <div class="grid md:grid-cols-5 gap-8">
+                <div class="md:col-span-3 card" data-aos="fade-up">
+                    <h3 class="font-bold text-white text-xl mb-3">AGENT_PROFILE:</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Seorang profesional multidisipliner yang beroperasi di persimpangan antara **teknologi AI, seni digital, dan budaya**. Aktif sebagai kreator yang mengubah konsep imajinatif menjadi aset visual berkualitas tinggi, sekaligus seorang pemikir yang mengintegrasikan kearifan lokal dengan inovasi masa depan. Percaya bahwa kemajuan sejati dibangun dari realitas lapangan, dieksekusi dengan presisi teknis, dan dijiwai oleh nilai-nilai spiritual.
+                    </p>
+                </div>
+                <div class="md:col-span-2 card" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="font-bold text-white text-xl mb-3">CORE_DIRECTIVES:</h3>
+                    <ul class="list-none space-y-2 text-gray-400">
+                        <li><span class="neon-cyan">></span> Inovasi dari Bawah, Membangun dari Jalan</li>
+                        <li><span class="neon-cyan">></span> Jembatan Antara Dunia Lama & Masa Depan</li>
+                        <li><span class="neon-cyan">></span> Berbasis Tauhid & Ilmu Modern</li>
+                        <li><span class="neon-cyan">></span> Visi Budaya sebagai Aset Utama Bangsa</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECT ARCHIVES -->
+        <section id="projects" class="mb-24">
+            <h2 class="block-title text-3xl neon-cyan" data-aos="fade-right">>_PROJECT_ARCHIVES_</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="card" data-aos="fade-up">
+                    <img src="https://github.com/aabrur/my-portfolio-assets/blob/main/Aria%20&%20Kael.png?raw=true" alt="[Gambar karakter Aria]" class="rounded-md mb-4 w-full h-56 object-cover border border-pink-500/20">
+                    <h3 class="font-bold text-lg text-white mb-2">Character Concept: ARIA & Kael</h3>
+                    <p class="text-sm text-gray-400 mb-3">Desain karakter orisinal dari nol dengan perpaduan gaya anime, semi-realistis, dan dark fantasy.</p>
+                    <span class="text-xs font-bold uppercase neon-pink">AI Art</span>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://github.com/aabrur/my-portfolio-assets/blob/main/AI%20Fashion%20Collection-Lora.png?raw=true" alt="[Gambar koleksi fashion AI]" class="rounded-md mb-4 w-full h-56 object-cover border border-cyan-500/20">
+                    <h3 class="font-bold text-lg text-white mb-2">AI Fashion Design Collection</h3>
+                    <p class="text-sm text-gray-400 mb-3">Koleksi 129 desain fashion orisinal, hasil dari training LoRA model kustom untuk konsistensi gaya.</p>
+                    <span class="text-xs font-bold uppercase neon-cyan">AI Art / LoRA</span>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://github.com/aabrur/my-portfolio-assets/blob/main/R&D%20Biomechanical%20Botany.png?raw=true" alt="[Gambar bunga biomekanik]" class="rounded-md mb-4 w-full h-56 object-cover border border-pink-500/20">
+                    <h3 class="font-bold text-lg text-white mb-2">R&D: Biomechanical Botany</h3>
+                    <p class="text-sm text-gray-400 mb-3">Eksperimen R&D untuk menciptakan estetika visual baru dengan menggabungkan elemen organik dan mekanis.</p>
+                    <span class="text-xs font-bold uppercase neon-pink">Creative R&D</span>
+                </div>
+
+                <div class="card" data-aos="fade-up">
+                    <img src="https://github.com/aabrur/my-portfolio-assets/blob/main/The%20Holy%20Grail%20Preview.png?raw=true" alt="[Screenshot workflow ComfyUI]" class="rounded-md mb-4 w-full h-56 object-cover border border-cyan-500/20">
+                    <h3 class="font-bold text-lg text-white mb-2">The Holy Grail Workflow</h3>
+                    <p class="text-sm text-gray-400 mb-3">Workflow ComfyUI modular yang dirilis di GitHub untuk kendali komposisi dan pose yang presisi.</p>
+                    <span class="text-xs font-bold uppercase neon-cyan">AI Workflow</span>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://github.com/aabrur/my-portfolio-assets/blob/main/Gaan.png?raw=true" alt="[Logo atau mockup GAAN]" class="rounded-md mb-4 w-full h-56 object-cover border border-pink-500/20">
+                    <h3 class="font-bold text-lg text-white mb-2">GAAN - Social QR Game</h3>
+                    <p class="text-sm text-gray-400 mb-3">Konsep aplikasi gamifikasi sosial berbasis QR Code, menyatukan dunia nyata dan digital untuk Gen Z.</p>
+                    <span class="text-xs font-bold uppercase neon-pink">App Concept</span>
+                </div>
+                
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://github.com/aabrur/my-portfolio-assets/blob/main/GS%20Cover%20image.png?raw=true" alt="[Logo atau produk GS Shoes]" class="rounded-md mb-4 w-full h-56 object-cover border border-cyan-500/20">
+                    <h3 class="font-bold text-lg text-white mb-2">GS Shoes - Ghalen Swivel</h3>
+                    <p class="text-sm text-gray-400 mb-3">Brand sepatu lokal dengan fokus pada desain stylish, keberlanjutan, dan kolaborasi fashion.</p>
+                    <span class="text-xs font-bold uppercase neon-cyan">Brand Creator</span>
+                </div>
+
+            </div>
+        </section>
+        
+        <!-- DIGITAL ASSETS -->
+        <section id="assets" class="mb-24">
+            <h2 class="block-title text-3xl neon-pink" data-aos="fade-right">>_DIGITAL_ASSETS_</h2>
+            <div class="card overflow-x-auto" data-aos="fade-up">
+                <table class="w-full text-left">
+                    <thead class="border-b border-pink-500/50">
+                        <tr>
+                            <th class="p-3 uppercase text-white">Produk</th>
+                            <th class="p-3 uppercase text-white">Jenis</th>
+                            <th class="p-3 uppercase text-white">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-400">
+                        <tr class="border-b border-slate-700/50">
+                            <td class="p-3 font-bold">Worman_Cloth-IL.safetensors</td>
+                            <td class="p-3">LORA (Fashion AI)</td>
+                            <td class="p-3"><span class="neon-cyan">Selesai</span></td>
+                        </tr>
+                        <tr class="border-b border-slate-700/50">
+                            <td class="p-3 font-bold">The Holy Grail Workflow</td>
+                            <td class="p-3">Modular ComfyUI</td>
+                            <td class="p-3"><span class="neon-cyan">Rilis di GitHub</span></td>
+                        </tr>
+                        <tr class="border-b border-slate-700/50">
+                            <td class="p-3 font-bold">SDXL_Refiner_Upscale_Workflow</td>
+                            <td class="p-3">Workflow (ComfyUI)</td>
+                            <td class="p-3"><span class="neon-cyan">Siap Pakai, dan baru rilis di SeeArt</span></td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-bold">OBS + Descript Setup</td>
+                            <td class="p-3">AI Video Portrait</td>
+                            <td class="p-3"><span class="neon-cyan">Digunakan untuk Recording, akan Rilis di GitHub</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SKILLSET MATRIX -->
+        <section id="skills" class="mb-24">
+            <h2 class="block-title text-3xl neon-cyan" data-aos="fade-right">>_SKILLSET_MATRIX_</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card" data-aos="fade-up">
+                    <h3 class="font-bold text-white text-xl mb-3 neon-cyan">// AI & GENERATIVE</h3>
+                    <ul class="list-none space-y-2">
+                        <li>Advanced Prompt Engineering</li>
+                        <li>Custom LoRA Model Training</li>
+                        <li>ComfyUI Workflow Mastery</li>
+                        <li>ControlNet & Composition</li>
+                        <li>Style & Character Consistency</li>
+                        <li>Latent Space Manipulation</li>
+                    </ul>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-delay="150">
+                    <h3 class="font-bold text-white text-xl mb-3 neon-pink">// TECHNICAL</h3>
+                    <ul class="list-none space-y-2">
+                        <li>Adobe Photoshop</li>
+                        <li>Adobe Premiere Pro & After Effects</li>
+                        <li>Microsoft Office Suite</li>
+                        <li>Remote Tools (Trello, Zoom)</li>
+                        <li>Hardware & OS Troubleshooting</li>
+                        <li>Basic Graphic & Video Editing</li>
+                    </ul>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="font-bold text-white text-xl mb-3 neon-cyan">// OPERATIONAL</h3>
+                    <ul class="list-none space-y-2">
+                        <li>Manajemen Proyek & Event</li>
+                        <li>Customer Service & Trust Building</li>
+                        <li>Riset & Analisis Lapangan</li>
+                        <li>Komunikasi Lintas Disiplin</li>
+                        <li>Adaptif & Problem Solving</li>
+                        <li>Logistics & Material Control</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHRONICLES -->
+        <section id="chronicles" class="mb-24">
+            <h2 class="block-title text-3xl neon-pink" data-aos="fade-right">>_CHRONICLES_</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div data-aos="fade-up">
+                    <h3 class="text-2xl font-orbitron text-white mb-6">// WORK_EXPERIENCE</h3>
+                    <div class="relative">
+                        <div class="timeline-item">
+                            <p class="font-bold text-white">2019 - Sekarang</p>
+                            <p class="font-semibold text-lg neon-cyan">Driver Mitra - Gojek Indonesia</p>
+                            <p class="text-sm text-gray-400">Menjemput dan mengantar penumpang/pesanan dengan aman, tepat waktu, ramah, & efisensi waktu dan jarak.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <p class="font-bold text-white">2017 - 2018</p>
+                            <p class="font-semibold text-lg">Staf Akademik - ITL Trisakti</p>
+                            <p class="text-sm text-gray-400">Manajemen data dan layanan administrasi akademik.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <p class="font-bold text-white">2016 - 2017</p>
+                            <p class="font-semibold text-lg">Chef Tempura - Marugame Udon & Tempura</p>
+                            <p class="text-sm text-gray-400">Menyiapkan adonan dan menggoreng tempura seafood & sayuran sesuai standar, & mengelola stok.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <p class="font-bold text-white">2014 - 2016</p>
+                            <p class="font-semibold text-lg">Creative Specialist - iBig Creative</p>
+                            <p class="text-sm text-gray-400">Event Organizer, Produksi konten digital, kampanye visual, dan eksekusi konsep branding.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <p class="font-bold text-white">2012 - 2013</p>
+                            <p class="font-semibold text-lg">Operator Material Control - PT Yamaha Indonesia</p>
+                            <p class="text-sm text-gray-400">Manajemen material dan operasional jalur produksi dalam sistem manufaktur terstruktur.</p>
+                        </div>
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-2xl font-orbitron text-white mb-6">// EDUCATION_&_PROJECTS</h3>
+                    <div class="relative">
+                        <div class="timeline-item">
+                            <p class="font-bold text-white">2023 - Sekarang</p>
+                            <p class="font-semibold text-lg neon-pink">S1 Manajemen Logistik - ITL Trisakti</p>
+                        </div>
+                        <div class="timeline-item">
+                            <p class="font-bold text-white">Additional Projects & Activities</p>
+                            <ul class="list-disc list-inside text-sm text-gray-400 mt-2 space-y-1">
+                                <li>Game Master & User Management (Ran Bizantium Online)</li>
+                                <li>Data Collection & Field Survey (Social App Dev GAAN)</li>
+                                <li>Event Organizer Team (Lotte, Daikin, McQuay)</li>
+                                <li>Sponsor Acquisition Support (Al-Fest)</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item">
+                            <p class="font-bold text-white">Writings (In Progress)</p>
+                            <p class="font-semibold text-lg">Buku: Teori Benang Kosmik</p>
+                            <p class="text-sm text-gray-400">Integrasi sains modern dan Tauhid dalam kosmologi, evolusi, dan masa depan manusia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT PROTOCOL -->
+        <section id="contact" class="text-center">
+            <h2 class="block-title text-3xl neon-cyan" data-aos="fade-right">>_CONTACT_PROTOCOL_</h2>
+            <div class="card max-w-3xl mx-auto" data-aos="zoom-in">
+                <h3 class="font-orbitron text-2xl text-white mb-4">ESTABLISH_CONNECTION</h3>
+                <p class="text-gray-400 mb-6">Let's collaborate and create the future of visuals.</p>
+                <div class="flex flex-wrap justify-center items-center gap-x-6 gap-y-4">
+                    <a href="https://www.linkedin.com/in/mohamad-abrur" target="_blank" class="text-lg neon-cyan hover:neon-pink transition-colors duration-300">LinkedIn</a>
+                    <span class="text-slate-600 hidden md:block">|</span>
+                    <a href="https://github.com/aabrur" target="_blank" class="text-lg neon-cyan hover:neon-pink transition-colors duration-300">GitHub</a>
+                    <span class="text-slate-600 hidden md:block">|</span>
+                    <a href="https://huggingface.co/aabrur" target="_blank" class="text-lg neon-cyan hover:neon-pink transition-colors duration-300">Hugging Face</a>
+                    <span class="text-slate-600 hidden md:block">|</span>
+                    <a href="mailto:abrur_nic@yahoo.com" class="text-lg neon-cyan hover:neon-pink transition-colors duration-300">Email</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- AOS - Animate on Scroll Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true, // Animasi hanya berjalan sekali
+            offset: 50, // Memicu animasi sedikit lebih awal
+            duration: 800, // Durasi animasi
+        });
+    </script>
+</body>
+</html>
