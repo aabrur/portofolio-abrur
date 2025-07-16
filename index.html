@@ -97,11 +97,20 @@
             border-right: .15em solid var(--primary-cyan);
             white-space: nowrap;
             overflow: hidden;
-            /* Ubah steps(40) menjadi steps(58) dan sesuaikan durasinya */
-            animation: typing 4.5s steps(58, end), blink-caret .75s step-end infinite;
+            width: 0; /* Mulai dari lebar 0 secara eksplisit */
+            animation: typing 4.5s steps(58, end) forwards, blink-caret .75s step-end infinite;
         }
-        @keyframes typing { from { width: 0 } to { width: 100% } }
-        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--primary-cyan); } }
+
+        /* Penting: Pastikan @keyframes typing tidak berubah */
+        @keyframes typing { 
+        from { width: 0 } 
+        to { width: 100% } 
+        }
+
+        @keyframes blink-caret { 
+        from, to { border-color: transparent } 
+        50% { border-color: var(--primary-cyan); } 
+        }
 
         /* Styling untuk Kartu/Panel */
         .card {
