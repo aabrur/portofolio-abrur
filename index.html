@@ -97,7 +97,8 @@
             border-right: .15em solid var(--primary-cyan);
             white-space: nowrap;
             overflow: hidden;
-            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+            /* Ubah steps(40) menjadi steps(58) dan sesuaikan durasinya */
+            animation: typing 4.5s steps(58, end), blink-caret .75s step-end infinite;
         }
         @keyframes typing { from { width: 0 } to { width: 100% } }
         @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--primary-cyan); } }
